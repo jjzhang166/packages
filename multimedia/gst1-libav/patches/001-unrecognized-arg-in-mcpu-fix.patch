@@ -1,0 +1,17 @@
+--- a/gst-libs/ext/libav/configure
++++ b/gst-libs/ext/libav/configure
+@@ -4124,7 +4124,13 @@ elif enabled arm; then
+             subarch=$(echo $cpu | sed 's/[^a-z0-9]//g')
+         ;;
+         *)
+-            cpuflags="-mcpu=$cpu"
++            case $cpu in
++                cortex-a53*)                             mcpu_option=cortex-a53 ;;
++                cortex-a8*)                              mcpu_option=cortex-a8 ;;
++                cortex-a7*)                              mcpu_option=cortex-a7 ;;
++                *)                                       mcpu_option=$cpu ;;
++            esac
++            cpuflags="-mcpu=$mcpu_option"
+             case $cpu in
+                 cortex-a*)                               subarch=armv7a  ;;
+                 cortex-r*)                               subarch=armv7r  ;;
