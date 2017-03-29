@@ -16,7 +16,7 @@ PKG_MAINTAINER:=W. Michael Petullo <mike@flyn.org> \
 
 PKG_SOURCE:=gst-libav-$(PKG_VERSION).tar.xz
 PKG_SOURCE_URL:=http://gstreamer.freedesktop.org/src/gst-libav
-PKG_MD5SUM:=b5f3c7a27b39b5f5c2f0bfd546b0c655020faf6b38d27b64b346c43e5ebf687a
+PKG_MD5SUM:=95bc3dd0ea2dc664b4f3a96897005013
 
 PKG_LICENSE:=GPL-2.0 LGPL-2.0
 PKG_LICENSE_FILES:=COPYING COPYING.LIB
@@ -45,6 +45,7 @@ LIBAV_ENCODERS:= \
 LIBAV_DECODERS:= \
 	aac \
 	ac3 \
+	ape \
 	atrac3 \
 	gif \
 	h264 \
@@ -78,6 +79,7 @@ LIBAV_MUXERS:= \
 
 LIBAV_DEMUXERS:= \
 	ac3 \
+	ape \
 	ffm \
 	h264 \
 	mp3 \
@@ -93,6 +95,7 @@ LIBAV_DEMUXERS:= \
 LIBAV_PARSERS:= \
 	aac \
 	ac3 \
+	ape \
 	h264 \
 	mpegaudio \
 	mpegvideo \

@@ -20,7 +20,7 @@ PKG_LICENSE_FILES:=COPYING
 PKG_BUILD_DIR:=$(BUILD_DIR)/gstreamer-$(PKG_VERSION)
 PKG_SOURCE:=gstreamer-$(PKG_VERSION).tar.xz
 PKG_SOURCE_URL:=http://gstreamer.freedesktop.org/src/gstreamer/
-PKG_MD5SUM:=9dbebe079c2ab2004ef7f2649fa317cabea1feb4fb5605c24d40744b90918341
+PKG_MD5SUM:=0f011ee793cbcfa96d6b51d8271349fa
 
 PKG_FIXUP:=autoreconf
 PKG_REMOVE_FILES:=autogen.sh aclocal.m4

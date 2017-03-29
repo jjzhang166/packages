@@ -14,6 +14,7 @@ config GET_LIBAV_COMMON_AV_SUPPORT
 	default y
 	select GST1_LIBAV_DECODER_aac if GST1_LIBAV_PATENTED
 	select GST1_LIBAV_DECODER_ac3 if GST1_LIBAV_PATENTED
+	select GST1_LIBAV_DECODER_ape if GST1_LIBAV_PATENTED
 	select GST1_LIBAV_DECODER_h264 if GST1_LIBAV_PATENTED
 	select GST1_LIBAV_DECODER_atrac3 if GST1_LIBAV_PATENTED
 	select GST1_LIBAV_DECODER_jpegls
@@ -46,6 +47,11 @@ config GST1_LIBAV_ENCODER_ac3
 	bool "AC3"
 	depends on GST1_LIBAV_PATENTED
 	select GST1_LIBAV_PARSER_ac3
+
+config GST1_LIBAV_ENCODER_ape
+	bool "APE"
+	depends on GST1_LIBAV_PATENTED
+	select GST1_LIBAV_PARSER_ape
 
 config GST1_LIBAV_ENCODER_jpegls
 	bool "JPEG-LS"
@@ -88,6 +94,11 @@ config GST1_LIBAV_DECODER_ac3
 	bool "AC3"
 	depends on GST1_LIBAV_PATENTED
 	select GST1_LIBAV_PARSER_ac3
+
+config GST1_LIBAV_DECODER_ape
+	bool "APE"
+	depends on GST1_LIBAV_PATENTED
+	select GST1_LIBAV_PARSER_ape
 
 config GST1_LIBAV_DECODER_atrac3
 	bool "ATRAC3"
@@ -195,6 +206,9 @@ comment "Demuxers ---"
 config GST1_LIBAV_DEMUXER_ac3
 	bool "AC3"
 
+config GST1_LIBAV_DEMUXER_ape
+	bool "APE"
+
 config GST1_LIBAV_DEMUXER_ffm
 	bool "FFM (ffserver live feed)"
 
@@ -239,6 +253,9 @@ config GST1_LIBAV_PARSER_aac
 
 config GST1_LIBAV_PARSER_ac3
 	bool "AC3"
+
+config GST1_LIBAV_PARSER_ape
+	bool "APE"
 
 config GST1_LIBAV_PARSER_h264
 	bool "H.264"

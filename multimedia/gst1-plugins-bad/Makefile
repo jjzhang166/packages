@@ -20,7 +20,7 @@ PKG_LICENSE_FILES:=COPYING.LIB COPYING
 PKG_BUILD_DIR:=$(BUILD_DIR)/gst-plugins-bad-$(PKG_VERSION)
 PKG_SOURCE:=gst-plugins-bad-$(PKG_VERSION).tar.xz
 PKG_SOURCE_URL:=http://gstreamer.freedesktop.org/src/gst-plugins-bad/
-PKG_MD5SUM:=d7995317530c8773ec088f94d9320909d41da61996b801ebacce9a56af493f97
+PKG_MD5SUM:=83abc2e70684e7b195f18ca2992ef6e8
 
 PKG_BUILD_DEPENDS:= libgstreamer1 gstreamer1-plugins-base
 
@@ -112,10 +112,8 @@ CONFIGURE_ARGS += \
 	--disable-bz2 \
 	--disable-dc1394 \
 	--disable-directfb \
-	--disable-dts \
 	--disable-resindvd \
 	--disable-faac \
-	--disable-faad \
 	--disable-flite \
 	--disable-gsm \
 	--disable-kate \
@@ -123,7 +121,6 @@ CONFIGURE_ARGS += \
 	--disable-lv2 \
 	--disable-modplug \
 	--disable-mimic \
-	--disable-libmms \
 	--disable-mpeg2enc \
 	--disable-mplex \
 	--disable-musepack \
@@ -203,6 +200,8 @@ $(eval $(call GstBuildLibrary,photography,photography,,))
 $(eval $(call GstBuildLibrary,basecamerabinsrc,basecamerabinsrc,app,))
 $(eval $(call GstBuildLibrary,uridownloader,uridownloader,,))
 $(eval $(call GstBuildLibrary,badbase,badbase,,))
+$(eval $(call GstBuildLibrary,codecparsers,codecparsers,,))
+$(eval $(call GstBuildLibrary,mpegts,mpegts,,))
 
 # 1: short name
 # 2: description
@@ -257,8 +256,8 @@ $(eval $(call GstBuildPlugin,id3tag,id3tag support,tag,,))
 $(eval $(call GstBuildPlugin,jpegformat,jpegformat support,tag,,))
 $(eval $(call GstBuildPlugin,mpegpsdemux,mpegpsdemux support,pbutils,,))
 $(eval $(call GstBuildPlugin,mpegpsmux,mpegpsmux support,,,))
-#$(eval $(call GstBuildPlugin,mpegtsdemux,mpegtsdemux support,mpegts pbutils,,))
-#$(eval $(call GstBuildPlugin,mpegtsmux,mpegtsmux support,video,,))
+$(eval $(call GstBuildPlugin,mpegtsdemux,mpegtsdemux support,codecparsers mpegts pbutils audio tag,,))
+$(eval $(call GstBuildPlugin,mpegtsmux,mpegtsmux support,video,,))
 $(eval $(call GstBuildPlugin,mxf,mxf support,badbase audio video,,))
 $(eval $(call GstBuildPlugin,opusparse,OPUS streams library,pbutils,,+libopus))
 $(eval $(call GstBuildPlugin,pcapparse,pcapparse support,,,))
@@ -272,6 +271,10 @@ $(eval $(call GstBuildPlugin,siren,siren support,audio rtp,,))
 $(eval $(call GstBuildPlugin,speed,speed support,audio,,))
 $(eval $(call GstBuildPlugin,subenc,subenc support,controller,,))
 #$(eval $(call GstBuildPlugin,srtp,srtp support,rtp,,+libsrtp))
+$(eval $(call GstBuildPlugin,faad,faad support,audio,,+libfaad2))
+$(eval $(call GstBuildPlugin,dtsdec,dts support,audio,,+libdca))
+$(eval $(call GstBuildPlugin,mms,mms support,video,,))
+#$(eval $(call GstBuildPlugin,rtmp,rtmp support,audio,,+librtmp))
 
 $(eval $(call BuildPackage,gstreamer1-plugins-bad))
 $(eval $(call BuildPackage,gst1-plugins-bad))
